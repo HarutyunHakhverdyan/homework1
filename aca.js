@@ -1,2 +1,5 @@
-let a=confirm('5>6');
-alert(a)
+function n(name){
+	return name
+}
+let result =n('har')
+alert(result)
