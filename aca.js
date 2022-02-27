@@ -1,4 +1,10 @@
-/* 1
+/*
+// 1 Declare 2 variables a and b, such that a &gt; b, and define values for them. Output their
+//a. sum
+//b. difference (between a and b)
+//c. product
+//d. quotient (between a and b)
+//e. remainder (between a and b)
 let a = prompt();
 let b = prompt();
 if(a > b){
@@ -9,18 +15,23 @@ console.log(a/b);  //d.quotient
 console.log(a%b);  //e.remainder 
 }
 */
-/* 2
+/*
+ // 2 Print your name and age in the following format: “My name is ____, I am ____ .”
 let name = "Harutyun";
 let age = 29;
 let result ='"'+'My name is ' + name + ',' + ' I am ' + age +'."';
 console.log(result)
 */
-/* 3
+/* 
+//3 Declare a variable with defined value. Print the last digit of the number.
 let number = prompt();
 let result = number%10;
 console.log(result)
 */
-/* 4
+/*
+ // 4 Check whether a given number is negative. Print “yes”, if it is negative, print “no”
+otherwise.
+
 let number = prompt();
 if(number<0){
 	console.log('yes')
@@ -28,7 +39,9 @@ if(number<0){
 	console.log('no')
 }
 */
-/* 5
+/* 
+// 5 Given two numbers print 1 if one of them is divisible by the other one, otherwise print 0.
+
 let number1 = prompt();
 let number2 = prompt();
 if(number1%number2===0 || number2%number1===0){
@@ -37,7 +50,9 @@ if(number1%number2===0 || number2%number1===0){
 	console.log(0)
 }
 */
-/* 6
+/* 
+// 6 Given any number between 1 and 12. Print the name of the respective month.
+
 let number = +prompt()
  switch(number){
  	case 1 :
@@ -78,6 +93,9 @@ let number = +prompt()
  	break
  }
  */
+ /* 
+ // 7 Given three numbers. Find the maximum one.
+
  let number1 = prompt()
  let number2 = prompt()
  let number3 = prompt()
@@ -92,3 +110,4 @@ let number = +prompt()
  }
  let result = number+' is maximum'
  console.log(result)
+*/
