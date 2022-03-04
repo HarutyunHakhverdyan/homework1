@@ -1,5 +1,5 @@
 //1 For a given number calculate the sum of its digits.
-/*
+
 let num = +prompt();
 let sum = 0;
 for(;;){
@@ -64,4 +64,4 @@ for(;;){
 	if(num==0) break
 }
 console.log('New numer: '+sum)
-*/
+
