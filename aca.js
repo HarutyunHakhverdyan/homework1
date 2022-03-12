@@ -1,67 +1,59 @@
-//1 For a given number calculate the sum of its digits.
+//1. Given an array․ Compute the length of the array. (without using .length)
+let arr1 = [1,2,3,4,5,7,,,undefined,,,74,75];
+let length1=0
+for(let key in arr1){
+	length1=+key+1
+};
+// ete  zangvacum bollor tarrer@ dasavorvac en hajordakan ev tarr@ undefind@ chi
+let arr2 = [1,2,3,4,'Hello',65,76,87];
+let length2=0
+for(let i = 0;arr2[i]!=undefined; i++ ){
+	length2++
+};
+console.log(`arr1-${length1}, arr2-${length2}`) 
 
-let num = +prompt();
-let sum = 0;
-for(;;){
-	let x = num%10;
-	num = (num-num%10)/10
-	sum+= x 
-	if(num==0) break
+//2 Given an array of numbers. Print the sum of the elements in array.
+let arr = [1,8,9,12]
+let sum=0
+for(let i = 0;arr[i]!=undefined; i++ ){
+	sum += arr[i]
+};
+console.log(sum)
+//3. Given two numbers. Print powers of 2 between that numbers. (without using
+//Math.pow)
+let num1 = +prompt();
+let num2 = +prompt();
+for(let i = 0; 2**i<num2; i++ ){
+	if (2**i>num1) {
+	console.log(2**i)
+ }
 }
-console.log('sum: '+sum)
-
-// 2. Given three sides of a triangle. Check whether the triangle is valid or not. Print “yes” if it is valid
-//and “no&quot; otherwise. (Triangle is valid if the sum of its two sides are greater than the third side).
-
-const a = +prompt();
-const b = +prompt();
-const c = +prompt();
-if((a+b)>c && (a+c)>b && (b+c)>a){
-	console.log('yes')
-} else {
-	console.log('no')
-}
-
-// 2-rd  tarberak
-const a = +prompt();
-const b = +prompt();
-const c = +prompt();
-if(2*Math.max(a,b,c) < a+b+c){
-	console.log('yes')
-} else {
-	console.log('no')
-}
-
-//3. Given a number print its digits count.
-let num = +prompt();
-let count = 0;
-for(;;){
-	num = (num-num%10)/10
-	count++ 
-	if(num==0) break
-}
-console.log('count: '+count)
-
-//4. Count numbers of digit 9 in a number.
-let num = +prompt();
-let nine = 0;
-for(;;){
-	let x = num%10;
-	num = (num-num%10)/10
-	if(x==9){
-		nine++
+let num = prompt()
+let num1=''
+for(let i = 0; i<num.length; i++){
+	if(!(num[i]%2==0&&num[i+1]%2==0)){
+       num1+=num[i]
+	} else {
+		num1+=num[i]+'-'
 	}
-	if(num==0) break
 }
-console.log('nine: '+nine)
-//5 Given a positive number. Print it in reverse order.
-let num = +prompt();
-let sum = '';
-for(;;){
-	let x = num%10;
-	num = (num-num%10)/10
-	sum+= x 
-	if(num==0) break
-}
-console.log('New numer: '+sum)
+console.log(num1)
 
+//5.Insert a n positive number. Print the n-st prime number.
+let num = +prompt()
+let count = 0
+let result
+for(let num1 = 2 ;; num1++){
+let x=1
+for(let i =2; i<=num1/2+1;i++){
+   x*=num1%i
+}
+if(x||num1==2){
+	result=num1
+	++count
+  if(count===num){
+  	break
+  }	
+ }
+}
+console.log(result)
