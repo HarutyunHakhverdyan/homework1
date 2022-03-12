@@ -11,7 +11,6 @@ for(let i = 0;arr2[i]!=undefined; i++ ){
 	length2++
 };
 console.log(`arr1-${length1}, arr2-${length2}`) 
-
 //2 Given an array of numbers. Print the sum of the elements in array.
 let arr = [1,8,9,12]
 let sum=0
@@ -38,7 +37,6 @@ for(let i = 0; i<num.length; i++){
 	}
 }
 console.log(num1)
-
 //5.Insert a n positive number. Print the n-st prime number.
 let num = +prompt()
 let count = 0
