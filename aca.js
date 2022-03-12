@@ -1,5 +1,5 @@
 //1. Given an array․ Compute the length of the array. (without using .length)
-let arr1 = [1,2,3,4,5,7,,,undefined,,,74,75];
+/*let arr1 = [1,2,3,4,5,7,,,undefined,,,74,75];
 let length1=0
 for(let key in arr1){
 	length1=+key+1
@@ -37,11 +37,13 @@ for(let i = 0; i<num.length; i++){
 	}
 }
 console.log(num1)
-//5.Insert a n positive number. Print the n-st prime number.
+//5.Insert a n positive number. Print the n-st prime number.*/
+
 let num = +prompt()
 let count = 0
 let result
-for(let num1 = 2 ;; num1++){
+
+for(let num1 = 2 ;count!==num; num1++){
 let x=1
 for(let i =2; i<=num1/2+1;i++){
    x*=num1%i
@@ -49,9 +51,9 @@ for(let i =2; i<=num1/2+1;i++){
 if(x||num1==2){
 	result=num1
 	++count
-  if(count===num){
-  	break
-  }	
+  
+  	
+  	
  }
 }
 console.log(result)
