@@ -1,100 +1,138 @@
-//1. Given three numbers a, b (a ≤ b) and step. Create an array of evenly spaced elements
-//starting from a to b spaced by step.
+//1Given an object. Invert it (keys become values and values become keys). If there is
+//more than key for that given value create an array.
 
-function newArr(a,b,step){
-    let arr = []
-    for(let i = a; i<=b; i+=step){
-        arr.push(i)
-    }
-    return arr
-}
-let result = newArr(1,8,0.5);
-console.log(result);
-//2. Given a string and a symbol. Find the number of occurrences of the symbol in the string.
-
-function getNumSymbol(str,symbol){
-    let num = 0;
-    for(let i = 0;i<str.length; i++){
-        if(str[i]===symbol){
-            num++
+function newObj(obj) {
+    debugger
+    let lastObj={};
+    let arr=[]
+    for(let firstKey1 in obj){
+        let event1=1
+        let event2=0
+        for(let firstKey2 in obj){
+            if(obj[firstKey1]===obj[firstKey2]){
+            if(firstKey1!=firstKey2){
+           event1=0
+           event2=1
+           arr.push(firstKey2);  
+          }else if(event2){
+            arr.push(firstKey1);
+          }
         }
     }
-    return num
-}
-let result = getNumSymbol('barev Harut','a');
-console.log(result);
-
-//3. Given a string. Check whether the string is palindrome or not.
-
-function palindrom(str){
-    for(let i = 0; i<str.length; i++){
-        if(str[i]==str[str.length-1-i]){
-            return 'Yes'
-        }else{
-            return 'No'
+    lastObj[obj[firstKey1]]=arr
+        arr=[]
+        if(event1){
+            lastObj[obj[firstKey1]]=firstKey1
         }
     }
+    return lastObj
 }
-let result = palindrom('ara');
-console.log(result);
+let firstObj={
+    g:'55',
+    p:'6',
+    t:'4',
+    a:'2',
+    c:'2',
+    d:'2',
+    f:'3',
+    h:'98',
+    b:'3',
+    e:'3',
+    k:'4'
 
-//4. Given an array of numbers. Find the maximum element in array.
+};
+let result = newObj(firstObj);
+console.log(result)
+// 2 Given two objects. Write a function that performs shallow compare.
 
-function arrMax(arr){
-    let max=arr[0]
-    for(let i = 0; i<arr.length;i++){
+function shallowCompare(a, b){
+    debugger
+    let key2
+    let p=1
+    let n1=0
+    let n2=0
+    for(let key1 in a){
+        let k=0
+        n2=0
+        n1++
+        for(key2 in b){
+            n2++
+          if(key1==key2&&a[key1]==b[key2]){
+            k=1
+          }
+        }
+        p*=k
+  }
+  if(p&&n2==n1) {
+    return true
+   }
+   return false
+}
+let obj1={
+    a:1,
+    b:2,
+    c:23
+};
+let obj2={
+    a:1,
+    b:2,
+    c:23,
+    f:67
+};
+let result = shallowCompare(obj1,obj2)
+console.log(result)
+//3. Given an array. Determine whether it consists only from uniques or not.
+
+function uniqueOrNot(arr){
+    for(let i =0;i<arr.length;i++){ 
+       for(let j =0;j<arr.length;j++){
+            if(i!=j){
+              if(arr[i]==arr[j]){
+                return 'There are repetitions in the mass'
+             }
+           }
+        } 
+    }
+    return 'The mass consists of uniques'    
+};
+let arr1 = [1,2,3,4,5,6,7,8,78,]
+let result = uniqueOrNot(arr1);
+console.log(result)
+alert(2)
+//4. Determine if a word or phrase is an isogram. An isogram (also known as a &quot;non pattern
+//word&quot;) is a word or phrase without a repeating letter.
+function isogram(word){
+    for(let i=0;i<word.length;i++){
+        for(let j=0;j<word.length;j++){
+            if(i!=j){
+                if(word[i]==word[j]){
+                    return false
+                }
+            }
+        }
+    }
+    return true
+}
+let word1='asdfghjkla'
+let result=isogram(word1);
+console.log(result)
+//5. Given an array of integers. All numbers are unique. Find the count of missing numbers
+//between minimum and maximum elements to make integers sequence.
+function count(arr){
+    let max=arr[0];
+    let min=arr[0];
+    let n
+    for(let i = 0;i<arr.length;i++){
         if(max<=arr[i]){
             max=arr[i]
         }
-    }
-    return max
-}
-let result = arrMax([37,12,9,1,2,3,7,23]);
-console.log(result);
-//5. Given an array. Create the array which elements are products between two neighbours.
-
-function newArr(arr){
-    let arrNew = [];
-    for(let i = 0; i<arr.length-1; i++){
-        arrNew.push(arr[i]*arr[i+1])
-    }
-    return arrNew
-}
-let result = newArr([1,2,3,3,10])
-console.log(result);
-//6. Given a string and symbols. Change first symbol by the second one in the string.
-
-function newStr(str,symbol1,symbol2){
-    let strNew = '';
-    for(let i = 0;i<str.length; i++){
-        if(str[i]!=symbol1){
-            strNew+=str[i]
-        }else{
-            strNew+=symbol2
+        if(min>=arr[i]){
+            min=arr[i]
         }
     }
-    return strNew
+     n=max-min-arr.length+1
+    return n
 }
-let result = newStr('Barev harut','h','H')
-console.log(result);
-
-//7. Print the following number pattern:
-
-function printNum(num){
-    let arr=[]
-    let k=2*num-2
-    let num1=''
-    for(let i = 1; i<=num; i++){
-        num1 += i;
-        arr[i-1]=num1
-        arr[k--]=num1
-    }
-    let print =''
-    //return arr
-    for(let i = arr.length; i>0; i--){
-        print+=arr.pop()+'\n'
-    }
-  return print
-}
-let result = printNum(9)
+let arr1=[34,11,8,41,23]
+let result = count(arr1);
 console.log(result)
