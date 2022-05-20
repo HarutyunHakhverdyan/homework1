@@ -1,138 +1,178 @@
-//1Given an object. Invert it (keys become values and values become keys). If there is
-//more than key for that given value create an array.
-
-function newObj(obj) {
-    debugger
-    let lastObj={};
-    let arr=[]
-    for(let firstKey1 in obj){
-        let event1=1
-        let event2=0
-        for(let firstKey2 in obj){
-            if(obj[firstKey1]===obj[firstKey2]){
-            if(firstKey1!=firstKey2){
-           event1=0
-           event2=1
-           arr.push(firstKey2);  
-          }else if(event2){
-            arr.push(firstKey1);
-          }
-        }
-    }
-    lastObj[obj[firstKey1]]=arr
-        arr=[]
-        if(event1){
-            lastObj[obj[firstKey1]]=firstKey1
-        }
-    }
-    return lastObj
-}
-let firstObj={
-    g:'55',
-    p:'6',
-    t:'4',
-    a:'2',
-    c:'2',
-    d:'2',
-    f:'3',
-    h:'98',
-    b:'3',
-    e:'3',
-    k:'4'
-
-};
-let result = newObj(firstObj);
-console.log(result)
-// 2 Given two objects. Write a function that performs shallow compare.
-
-function shallowCompare(a, b){
-    debugger
-    let key2
-    let p=1
-    let n1=0
-    let n2=0
-    for(let key1 in a){
-        let k=0
-        n2=0
-        n1++
-        for(key2 in b){
-            n2++
-          if(key1==key2&&a[key1]==b[key2]){
-            k=1
-          }
-        }
-        p*=k
+/*//1. Create a function that builds a tree.
+const treeNodes = [
+{id: 1, children: [3,]},
+{id: 2, children: [4, 5]},
+{id: 3, children: [6]},
+{id: 4, children: [7]},
+{id: 5, children: []},
+{id: 6, children: []},
+{id: 7, children: [8, 9]},
+{id: 8, children: []},
+{id: 9, children: [10]},
+{id: 10, children: []},
+{id: 'root',children: [1, 2]},
+]
+function treeObj(arr1,i=0,tree={}) {
+arr=arr1.sort(function(a,b){
+  if(a.id=='root'){
+    return-1
   }
-  if(p&&n2==n1) {
-    return true
-   }
-   return false
+})
+  if(i!=arr.length){
+    let {id,children}=arr[i]
+    if(id=='root'){
+      for(let i=0;i<children.length;i++){
+        tree[children[i]]=[];
+      }
+     }
+    function getProp(tree,id,children,condition=1){
+      for(let key in tree){
+        if(id==key){
+          tree[key]={}
+          for(let i=0;i<children.length;i++){
+            tree[key][children[i]]=[] 
+          }
+          condition=0
+        }
+          if(condition){
+            getProp(tree[key],id,children)
+         }
+       }
+      }
+    getProp(tree,id,children);
+    i++
+    treeObj(arr,i,tree)
+  }
+  return tree
 }
-let obj1={
-    a:1,
-    b:2,
-    c:23
-};
-let obj2={
-    a:1,
-    b:2,
-    c:23,
-    f:67
-};
-let result = shallowCompare(obj1,obj2)
+let result=treeObj(treeNodes)
 console.log(result)
-//3. Given an array. Determine whether it consists only from uniques or not.
+//2. Write a JavaScript function to get all possible subsets of given length of the given
+//array.
+function aaa(arr,n,newArr=[],set1=new Set(),set2=new Set()){
+  for(let i=0;set2.size<n;i++){
+   let el=arr[Math.round(Math.random()*(arr.length-1))]
+   set2.add(el)
+  }
+  let arr1=[]
+  for(let value of set2.values()){
+    arr1.push(value)
+  }
+  arr1=arr1.sort((a,b)=>a-b)
+  let str=arr1.reduce(function(total,curent){
+    return total+curent
+  },'') 
+  let num=1
+  let step=(n-2)*(arr.length-n)
+  for(let i=0;i<arr.length-n;i++){
+    let j
+    for(j=0;j<=i*(n-2);j++){
+         step+=arr[j];   
+    }
+    num+=step+arr[i]
+    step=0
+  }
+  if(n==1){
+    num=arr.length
+  }
+  if(set1.size<num){
+    set1.add(str)
+    aaa(arr,n,newArr,set1)
+  }else{
+    for(let value of set1.values()){
+      newArr.push(value)
+      newArr=newArr.sort((a,b)=>a-b)
+         }
+  }
+newArr=newArr.map((el)=>(el.split('').map((el)=>Number(el))))
+  return newArr
+}
+let result=aaa([1,2,3,4,5,6],4)
+console.log(result)
 
-function uniqueOrNot(arr){
-    for(let i =0;i<arr.length;i++){ 
-       for(let j =0;j<arr.length;j++){
-            if(i!=j){
-              if(arr[i]==arr[j]){
-                return 'There are repetitions in the mass'
-             }
-           }
-        } 
+//erkrord tarberak vor@ ashxatuma 1,2,3,depqum
+function a(arr,n,newArr=[],firstI=0,nextI=1,curentI=2){    
+  if(newArr.length!=n){
+    newArr[0]=arr[firstI];
+  }
+  if(newArr.length!=n){
+    newArr[1]=arr[nextI]
+  }
+  if(newArr.length!=n){
+    newArr.push(arr[curentI])
+  }
+  if(newArr.length==n){
+    console.log(newArr)
+    if(curentI!=arr.length-1){
+      curentI=arr.indexOf(newArr[2])
     }
-    return 'The mass consists of uniques'    
-};
-let arr1 = [1,2,3,4,5,6,7,8,78,]
-let result = uniqueOrNot(arr1);
-console.log(result)
-alert(2)
-//4. Determine if a word or phrase is an isogram. An isogram (also known as a &quot;non pattern
-//word&quot;) is a word or phrase without a repeating letter.
-function isogram(word){
-    for(let i=0;i<word.length;i++){
-        for(let j=0;j<word.length;j++){
-            if(i!=j){
-                if(word[i]==word[j]){
-                    return false
-                }
-            }
-        }
+    if(arr.indexOf(newArr[1])==-1){
+      nextI=arr.length
     }
-    return true
-}
-let word1='asdfghjkla'
-let result=isogram(word1);
-console.log(result)
-//5. Given an array of integers. All numbers are unique. Find the count of missing numbers
-//between minimum and maximum elements to make integers sequence.
-function count(arr){
-    let max=arr[0];
-    let min=arr[0];
-    let n
-    for(let i = 0;i<arr.length;i++){
-        if(max<=arr[i]){
-            max=arr[i]
-        }
-        if(min>=arr[i]){
-            min=arr[i]
-        }
+    newArr=[]
+  }
+   if(curentI==-1){
+    curentI=arr.length
+  }
+   if(curentI<arr.length-1){
+    curentI++;
+    a(arr,n,newArr,firstI,nextI,curentI)
+  }else if(nextI<arr.length-n+1){
+    nextI++;
+    a(arr,n,newArr,firstI,nextI,nextI+1)
+  }else if(arr.length>n){
+    arr.shift();
+    a(arr,n)
+  }
+ }
+
+ a([1,2,3,4,5,6],4)
+ // 3 Create a decorator delay(f, ms) that delays each call of ‘f’ by ‘ms’ milliseconds.
+  function a(x){
+  console.log(x)
+ }
+ function dec(){
+  let i=0
+    return function res(fn,ms,p='hello'){
+      i++
+      setTimeout(()=>fn(p),ms)
     }
-     n=max-min-arr.length+1
-    return n
-}
-let arr1=[34,11,8,41,23]
-let result = count(arr1);
-console.log(result)
+ }
+ let delay =dec();
+ delay(a,1000)
+ delay(a,3000)
+ delay(a,5000)*/
+ 
+ //4. Implement Debounce decorator
+  function b(name){
+  console.log(name)
+ }
+ function a(){
+  let name=""
+  let time=0
+  let arr=[]
+    let i=-1
+  return function res(fn,ms=0,char,msFirst=2000){
+    if(ms>=msFirst){
+      name='';
+      i=-1;
+      arr=[]
+    }
+    name+=char
+    time=ms+msFirst 
+       let timerId = setTimeout(fn,time,name) 
+          arr.push(timerId)
+       function clear(i){
+        clearTimeout(arr[i])
+       } 
+       clear(i)
+       i++
+   }
+ }
+ let call=a();
+ call(b,500,'H')
+ call(b,800,'a')
+ call(b,1000,'r')
+ call(b,1200,'u')
+ call(b,1300,'t')
+ call(b,2000,'H.')
