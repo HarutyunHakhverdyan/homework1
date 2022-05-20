@@ -1,4 +1,4 @@
-/*//1. Create a function that builds a tree.
+//1. Create a function that builds a tree.
 const treeNodes = [
 {id: 1, children: [3,]},
 {id: 2, children: [4, 5]},
@@ -141,7 +141,7 @@ function a(arr,n,newArr=[],firstI=0,nextI=1,curentI=2){
  let delay =dec();
  delay(a,1000)
  delay(a,3000)
- delay(a,5000)*/
+ delay(a,5000)
  
  //4. Implement Debounce decorator
   function b(name){
