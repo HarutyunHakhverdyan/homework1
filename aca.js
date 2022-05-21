@@ -1,5 +1,5 @@
 //1. Create a function that builds a tree.
-const treeNodes = [
+/*const treeNodes = [
 {id: 1, children: [3,]},
 {id: 2, children: [4, 5]},
 {id: 3, children: [6]},
@@ -205,3 +205,22 @@ setTimeout(()=>call(b,'u'),800)
  call(b,1200,'u')
  call(b,1300,'t')
  call(b,2000,'H.')
+ */
+
+function b(l,n){
+  let num=1
+  let num2=1;
+  let num3=1
+  for(let i =1;i<=l;i++){
+    num*=i
+    if(i<=n){
+      num2*=i
+    }
+    if(i<=l-n){
+      num3*=i
+    }
+  }
+ num=num/num2/num3
+  return num
+}
+b(6,4)
