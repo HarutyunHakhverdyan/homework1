@@ -147,6 +147,35 @@ function a(arr,n,newArr=[],firstI=0,nextI=1,curentI=2){
   function b(name){
   console.log(name)
  }
+ function b(name){
+  console.log(name)
+ }
+ function impDebounce(time=2000){
+  let name=""
+  let arr=[]
+    let i=-1
+  return function res(fn,char){
+    name+=char
+       let timerId = setTimeout(fn,time,name) 
+          arr.push(timerId)
+       function clear(i){
+        clearTimeout(arr[i])
+       } 
+       clear(i)
+       i++
+   }
+ }
+ let call=impDebounce(3000);
+setTimeout(()=>call(b,'H'),500) 
+setTimeout(()=>call(b,'a'),600) 
+setTimeout(()=>call(b,'r'),700) 
+setTimeout(()=>call(b,'t'),900) 
+setTimeout(()=>call(b,'u'),800) 
+
+ //erkrord tarberak
+  function b(name){
+  console.log(name)
+ }
  function a(){
   let name=""
   let time=0
