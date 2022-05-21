@@ -1,5 +1,5 @@
 //1. Create a function that builds a tree.
-/*const treeNodes = [
+const treeNodes = [
 {id: 1, children: [3,]},
 {id: 2, children: [4, 5]},
 {id: 3, children: [6]},
@@ -49,6 +49,7 @@ let result=treeObj(treeNodes)
 console.log(result)
 //2. Write a JavaScript function to get all possible subsets of given length of the given
 //array.
+
 function aaa(arr,n,newArr=[],set1=new Set(),set2=new Set()){
   for(let i=0;set2.size<n;i++){
    let el=arr[Math.round(Math.random()*(arr.length-1))]
@@ -62,19 +63,23 @@ function aaa(arr,n,newArr=[],set1=new Set(),set2=new Set()){
   let str=arr1.reduce(function(total,curent){
     return total+curent
   },'') 
+function b(l,n){
   let num=1
-  let step=(n-2)*(arr.length-n)
-  for(let i=0;i<arr.length-n;i++){
-    let j
-    for(j=0;j<=i*(n-2);j++){
-         step+=arr[j];   
+  let num2=1;
+  let num3=1
+ for(let i =1;i<=l;i++){
+    num*=i
+    if(i<=n){
+      num2*=i
     }
-    num+=step+arr[i]
-    step=0
+    if(i<=l-n){
+      num3*=i
+    }
   }
-  if(n==1){
-    num=arr.length
-  }
+ num=num/num2/num3
+  return num
+}
+let num=b(arr.length,n)
   if(set1.size<num){
     set1.add(str)
     aaa(arr,n,newArr,set1)
@@ -87,7 +92,7 @@ function aaa(arr,n,newArr=[],set1=new Set(),set2=new Set()){
 newArr=newArr.map((el)=>(el.split('').map((el)=>Number(el))))
   return newArr
 }
-let result=aaa([1,2,3,4,5,6],4)
+let result=aaa([1,2,3,4,5,6,7],4)
 console.log(result)
 
 //erkrord tarberak vor@ ashxatuma 1,2,3,depqum
@@ -205,22 +210,5 @@ setTimeout(()=>call(b,'u'),800)
  call(b,1200,'u')
  call(b,1300,'t')
  call(b,2000,'H.')
- */
+ 
 
-function b(l,n){
-  let num=1
-  let num2=1;
-  let num3=1
-  for(let i =1;i<=l;i++){
-    num*=i
-    if(i<=n){
-      num2*=i
-    }
-    if(i<=l-n){
-      num3*=i
-    }
-  }
- num=num/num2/num3
-  return num
-}
-b(6,4)
