@@ -1783,6 +1783,7 @@ function func(start,number,elem){
 }
 console.log(arr)
 console.log(arr.func(2,3))*/
+/*
 let arr5=[11,222,33,44,555,66,777,888,999];
 arr5[fakeSplice]=fakeSplice
 function fakeSplice(start, deletecount, element1) {
@@ -1804,4 +1805,593 @@ function fakeSplice(start, deletecount, element1) {
 }
 
 console.log(arr5.fakeSplice(2,4))
-console.log(arr5)
+console.log(arr5)*/
+/*
+function newObj(obj) {
+    debugger
+    let lastObj={};
+    let arr=[]
+    for(let firstKey1 in obj){
+        let event1=1
+        let event2=0
+        for(let firstKey2 in obj){
+            if(obj[firstKey1]===obj[firstKey2]){
+            if(firstKey1!=firstKey2){
+           event1=0
+           event2=1
+           arr.push(firstKey2);  
+          }else if(event2){
+            arr.push(firstKey1);
+          }
+        }
+    }
+    lastObj[obj[firstKey1]]=arr
+        arr=[]
+        if(event1){
+            lastObj[obj[firstKey1]]=firstKey1
+        }
+    }
+    return lastObj
+}
+let firstObj={
+    g:'55',
+    p:'6',
+    t:'4',
+    a:'2',
+    c:'2',
+    d:'2',
+    f:'3',
+    h:'98',
+    b:'3',
+    e:'3',
+    k:'4'
+
+};
+let result = newObj(firstObj);
+console.log(result)
+*/ 
+/*
+function newObj(obj){
+	debugger
+	let obj2={};
+    for(let key1 in obj){
+    	let a=1
+    	let b=1
+    	if(!obj2[obj[key1]]){
+    		obj2[obj[key1]]=[]
+    	}
+    	for(let i=0;i<obj2[obj[key1]].length;i++){
+    		if(obj2[obj[key1]][i]==key1){
+    			a=0
+    		}
+            
+    	}
+    	if(a){
+    		obj2[obj[key1]].push(key1)
+    	}
+    	
+    	for(let key2 in obj){
+    		if(key2!=key1){
+    			if(obj[key1]==obj[key2]){
+                  a=0;
+           for(let j=0;j<obj2[obj[key1]].length;j++){
+    		   if(obj2[obj[key1]][j]==key2){
+    			b=0
+    		}
+            
+    	}
+			    	if(b){
+			    		obj2[obj[key1]].push(key2)
+			    	}
+    			}
+    		}
+    	}
+    	if(a){
+    		obj2[obj[key1]]=key1
+    	}
+    }
+	return obj2
+};
+let obj1={
+	a:1,
+	b:2,
+	c:2,
+	d:3,
+	e:3
+}
+let result=newObj(obj1);
+console.log(result)
+
+*//*
+let newStr=prompt();
+function a(str){
+  let obj={}
+    for(let i=0;i<str.length;i++){
+ 	  let reg=new RegExp(str[i],'g')
+ 	  let  arr=str.match(reg);
+ 	obj[arr[0]]=arr.length
+  }
+   for(let key in obj){
+ 	  alert(`${key}:${obj[key]}`)
+   }
+ }
+let result = a(newStr);
+function checkArr(newArr){
+    let index
+function check(el,i,arr){
+    if(el>arr[i-1]||i==0){
+    return true
+  }else{
+    index=i
+  }
+}
+    if(newArr.every(check)){
+    console.log(-1)
+}else{
+    console.log(index)
+}
+}
+let arr1=[1,2,3,7,8,0]
+let result=checkArr(arr1);*/
+
+/*
+function a(fn,firstVAlue){
+	debugger
+    	if(firstVAlue!==undefined){
+    		aggr=firstVAlue
+    	}else{
+    		aggr=arr[0]
+    	};
+    	for(let key=0;key<this.length;key++){
+    		if(this[key]!=a){
+    		  if(firstVAlue==undefined){
+    			if(key<=this.length-2){
+    		el=this[key+1];
+    		fn(aggr,el)
+    	}
+    	  }else{
+    	  	el=this[key];
+    		fn(aggr,el)
+    	  }
+    	 }
+    	};
+    	return aggr
+    	
+}
+let arr=[2,3,4,5,6];
+arr['a']=a
+let result=arr.a(function(aggre,el){
+	return aggr*=el
+});
+alert(result)
+let arr=[]
+let obj1={
+	a:1,
+	b:{
+		c:'barev'
+	}
+}
+function fn(obj,str=''){
+    debugger
+   
+   for(let key in obj){
+   	 
+   	if(typeof(obj[key])=='object'){
+         str+=String(key)+'.';
+         fn(obj[key])
+   	}else{
+   		str+=String(key,str)
+   	}
+   	arr.push(str)
+      str=''
+   }
+    return arr
+}
+let result=fn(obj1);
+console.log(result)
+let i=0;
+let arr1=[1,2,3,4,5,7,8];
+let arr2=[]
+function a(arr){
+	debugger
+	arr2.push(arr[i])
+	if(i!=arr1.length){
+		i++
+		a(arr)
+	}
+	return arr
+}
+let result=a(arr1)
+console.log(result)*/
+/*
+let arrayLike = {
+  0: "Hello",
+  1: "World",
+  length: 2
+};
+let arr= Array.from(arrayLike);
+console.log(arr)
+console.log(arr.push(787))*/
+
+/*
+function clonObj(obj,clon={},){
+	debugger
+	for(let key in obj){
+		if(typeof(obj[key])=='object'){
+			clon[key]={};
+			clonObj(obj[key],clon[key])
+		}else{
+			clon[key]=obj[key]
+		}
+	}
+	return clon
+}
+
+let obj1={
+	a:12,
+	b:{
+		c:13,
+		d:14,
+		f:{
+			k:'barev',
+			l:'hajox',
+			h:{
+				j:'sirum em',
+				p:'chem sirum'
+			}
+		}
+	},
+	e:15
+}
+let result=clonObj(obj1)
+obj1.b.f.l='harut'
+delete obj1.b.f.h.p
+console.log(result)
+console.log(obj1)*/
+/*
+
+function num(arr,N){
+    let num1=0
+    if(N==3){
+    let n=arr.length-2
+    for(let i=1;i<=n;i++){
+        num1+=i*(i+1)/2       //num() hashvuma depqeri qanak@
+    }
+   }else{
+     let n=arr.length;
+     for(let i =2;i<=n;i++){
+        num1+=i-1
+     }
+   }
+    return num1
+}
+function a(arr,n=2,newArr=[]){      //n qani hat element parunakox zangvac stananq  
+	let el=arr[Math.round(Math.random()*(arr.length-1))];
+     if(n){
+     	if(newArr.indexOf(el)==-1){
+     		n--;
+     		newArr.push(el)                       
+     		a(arr,n,newArr)
+     	}else{
+     		a(arr,n,newArr)
+     	}
+     }
+     newArr=newArr.sort((b,c)=>b-c)
+   return  newArr.reduce(function(total,curent){
+    return total+curent
+  },'')     
+}
+ function arrFromArr(arr,N,set=new Set()){
+ 	if(set.size!=num(arr,N)){
+ 		set.add(a(arr,N))
+ 		arrFromArr(arr,N,set)
+ 	}else{
+ 		for(let value of set.values()){
+ 	console.log((value.split('')).map((el)=> Number(el)))
+         }
+ 	 }
+ }
+ let arr1=[1,2,3,4]
+ arrFromArr(arr1)
+ *//*
+ function a(arr,n,newArr=[],firstI=0,nextI=1,curentI=2){    
+ 	if(newArr.length!=n){
+ 		newArr[0]=arr[firstI];
+ 	}
+ 	if(newArr.length!=n){
+ 		newArr[1]=arr[nextI]
+ 	}
+ 	if(newArr.length!=n){
+ 		newArr.push(arr[curentI])
+ 	}
+ 	if(newArr.length==n){
+ 		console.log(newArr)
+ 		if(curentI!=arr.length-1){
+ 			curentI=arr.indexOf(newArr[2])
+ 		}
+ 		if(arr.indexOf(newArr[1])==-1){
+ 			nextI=arr.length
+ 		}
+ 		newArr=[]
+ 	}
+   if(curentI==-1){
+ 		curentI=arr.length
+ 	}
+   if(curentI<arr.length-1){
+    curentI++;
+    a(arr,n,newArr,firstI,nextI,curentI)
+  }else if(nextI<arr.length-n+1){
+    nextI++;
+    a(arr,n,newArr,firstI,nextI,nextI+1)
+  }else if(arr.length>n){
+    arr.shift();
+    a(arr,n)
+  }
+ }
+
+ a([1,2,3,4],1)
+ */
+ /*
+function treeObj(arr,i=0,obj={}){
+    if(i!=arr.length){
+      let {parent:p,id}=arr[i];
+      if(p==null){
+        obj[id]={}
+      }
+      function objRec(obj,p,id,t=1){
+        for(let key1 in obj){
+          if(key1==p){
+            obj[key1][id]={}
+            t=0
+          }
+        if(t){
+          objRec(obj[key1],p,id)
+        }
+       }
+      }
+     objRec(obj,p,id)
+      i++
+      treeObj(arr,i,obj)
+    }
+    return obj
+};
+let result=treeObj( [
+{ parent: null, id: 0 },
+{parent: 0, id: 1 },
+{parent: 0, id: 2 }, 
+{parent: 2, id: 3 },
+{parent: 4, id: 4 },
+{parent: 6, id: 5 },
+{parent: 2, id: 6 },
+{parent: 6, id: 7 },
+
+]);
+console.log(result)
+*/
+/*
+ function a(arr,n,newArr=[],firstI=0,nextI=1,curentI=2){    
+  if(newArr.length!=n){
+    newArr[0]=arr[firstI];
+  }
+  if(newArr.length!=n){
+    newArr[1]=arr[nextI]
+  }
+  if(newArr.length!=n){
+    newArr.push(arr[curentI])
+  }
+  if(newArr.length==n){
+    console.log(newArr)
+    if(curentI!=arr.length-1){
+      curentI=arr.indexOf(newArr[2])
+    }
+    if(arr.indexOf(newArr[1])==-1){
+      nextI=arr.length
+    }
+    newArr=[]
+  }
+   if(curentI==-1){
+    curentI=arr.length
+  }
+   if(curentI<arr.length-1){
+    curentI++;
+    a(arr,n,newArr,firstI,nextI,curentI)
+  }else if(nextI<arr.length-n){
+    nextI++;
+    a(arr,n,newArr,firstI,nextI,nextI+1)
+  }else if(arr.length>n){
+    arr.shift();
+    a(arr,n)
+  }
+ }
+
+ a([1,2,3,4,5,6,7],3)
+ *//*
+ function a(arr,n,newArr=[],firstI=0,nextI=1,curentI=2){    
+ 	if(newArr.length!=n){
+ 		newArr[0]=arr[firstI];
+ 	}
+ 	if(newArr.length!=n){
+ 		newArr[1]=arr[nextI]
+ 	}
+ 	if(newArr.length!=n){
+ 		newArr.push(arr[curentI])
+ 	}
+ 	if(newArr.length==n){
+ 		console.log(newArr)
+ 		if(curentI!=arr.length-1){
+ 			curentI=arr.indexOf(newArr[2])
+ 		}
+ 		if(arr.indexOf(newArr[1])==-1){
+ 			nextI=arr.length
+ 		}
+ 		newArr=[]
+ 	}
+   if(curentI==-1){
+ 		curentI=arr.length
+ 	}
+   if(curentI<arr.length-1){
+    curentI++;
+    a(arr,n,newArr,firstI,nextI,curentI)
+  }else if(nextI<arr.length-n+1){
+    nextI++;
+    a(arr,n,newArr,firstI,nextI,nextI+1)
+  }else if(arr.length>n){
+    arr.shift();
+    a(arr,n)
+  }
+ }
+
+ a([1,2,3,4,5,6],4)
+ function a(x){
+  console.log(x)
+ }
+ function dec(fn){
+    return function res(p,ms){
+      setTimeout(()=>fn(p),ms)
+      
+    }
+ }
+ let delay =dec(a);
+ delay('barev',1000)
+ delay('hajox',3000)
+ delay(9999,5000)*/
+/*
+ function b(name){
+ 	console.log(name)
+ }
+ function a(){
+ 	let name=""
+ 	let time=0
+ 	let arr=[]
+    let i=-1
+ 	return function res(fn,ms=0,char,msFirst=2000){
+ 		if(ms>=msFirst){
+ 			name='';
+ 			i=-1;
+ 			arr=[]
+ 		}
+ 		name+=char
+ 		time=ms+msFirst 
+       let timerId = setTimeout(fn,time,name) 
+          arr.push(timerId)
+       function clear(i){
+       	clearTimeout(arr[i])
+       } 
+       clear(i)
+       i++
+   }
+ }
+ let call=a();
+ call(b,500,'H')
+ call(b,800,'a')
+ call(b,1000,'r')
+ call(b,1200,'u')
+ call(b,1300,'t')
+ call(b,2000,'H.')
+
+ *//*
+ function a(x){
+  console.log(x)
+ }
+ function dec(){
+  let i=0
+    return function res(fn,ms,p='hello'){
+      i++
+      setTimeout(()=>fn(p),ms)
+    }
+ }
+ let delay =dec();
+ delay(a,1000)
+ delay(a,3000)
+ delay(a,5000)
+ 
+ //4. Implement Debounce decorator*/
+/*  function b(name){
+  console.log(name)
+ }
+ function impDebounce(time=2000){
+  let name=""
+  let arr=[]
+    let i=-1
+  return function res(fn,char){
+    name+=char
+       let timerId = setTimeout(fn,time,name) 
+          arr.push(timerId)
+       function clear(i){
+        clearTimeout(arr[i])
+       } 
+       clear(i)
+       i++
+   }
+ }
+ let call=impDebounce(3000);
+setTimeout(()=>call(b,'H'),500) 
+setTimeout(()=>call(b,'a'),600) 
+setTimeout(()=>call(b,'r'),700) 
+setTimeout(()=>call(b,'t'),900) 
+setTimeout(()=>call(b,'u'),4000) 
+*/
+/*
+function aaa(arr,n,newArr=[],set1=new Set(),set2=new Set()){
+  for(let i=0;set2.size<n;i++){
+   let el=arr[Math.round(Math.random()*(arr.length-1))]
+   set2.add(el)
+  }
+  let arr1=[]
+  for(let value of set2.values()){
+    arr1.push(value)
+  }
+  arr1=arr1.sort((a,b)=>a-b)
+  let str=arr1.reduce(function(total,curent){
+    return total+curent
+  },'') 
+function b(l,n){
+  let num=1
+  let num2=1;
+  let num3=1
+ for(let i =1;i<=l;i++){
+    num*=i
+    if(i<=n){
+      num2*=i
+    }
+    if(i<=l-n){
+      num3*=i
+    }
+  }
+ num=num/num2/num3
+  return num
+}
+let num=b(arr.length,n)
+  if(set1.size<num){
+    set1.add(str)
+    aaa(arr,n,newArr,set1)
+  }else{
+    for(let value of set1.values()){
+      newArr.push(value)
+      newArr=newArr.sort((a,b)=>a-b)
+         }
+  }
+newArr=newArr.map((el)=>(el.split('').map((el)=>Number(el))))
+  return newArr
+}
+let result=aaa([1,2,3,4,5,6],4)
+console.log(result)
+*/
+let arr1=[1,2,3,4,5,6,7,8,9,66]
+function ind(arr,x,start=0,end=arr.length-1){
+   
+      if(start>end){
+      	return false
+      } 
+      let mid=Math.ceil((start+end)/2)
+      if(arr[mid]===x){
+      	return mid
+      }  
+      if(arr[mid]>x){
+      	return ind(arr,x ,start,mid-1)
+      }else{
+      	return ind(arr,x,mid+1,end)
+      }
+}
+let result=ind(arr1,66);
+console.log(result)
